@@ -1,0 +1,4 @@
+- if @video.video.attached?
+  %p= @video.title
+  %br/
+  %video{:controls => "", :src => "#{rails_blob_path(@video.video)}", :type => "video/mp4"}
