@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 20_200_925_182_823) do
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
     t.index ['tag_id'], name: 'index_video_tags_on_tag_id'
+    t.index %w[video_id tag_id], name: 'index_video_tags_on_video_id_and_tag_id', unique: true
     t.index ['video_id'], name: 'index_video_tags_on_video_id'
   end
 

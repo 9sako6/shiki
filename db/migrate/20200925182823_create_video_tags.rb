@@ -6,5 +6,7 @@ class CreateVideoTags < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+
+    add_index :video_tags, %i[video_id tag_id], unique: true
   end
 end
