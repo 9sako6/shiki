@@ -1,0 +1,8 @@
+= form_with model: @video, local: true do |form|
+  %p title
+  = form.text_field :title
+  %br/
+  %p video
+  = form.file_field :video
+  %br/
+  = form.submit
