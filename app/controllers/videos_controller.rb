@@ -14,7 +14,9 @@ class VideosController < ApplicationController
   end
 
   def show
-    @video = Video.find(params[:id])
+    @video = Video.includes(:tags).find(params[:id])
+    @tags = @video.tags
+    @all_tags = Tag.all
   end
 
   private

@@ -1,3 +1,7 @@
+%h1 Videos
+
 - @videos.each do |video|
   %div
     = link_to video.title, video
+  %div
+    %video{:controls => "", :src => "#{rails_blob_path(video.video)}", :type => "video/mp4", width: '300px'}
