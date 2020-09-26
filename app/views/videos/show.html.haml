@@ -1,15 +1,17 @@
-- if @video.video.attached?
-  %p= @video.title
-  %br/
-  %video{:controls => "", :src => "#{rails_blob_path(@video.video)}", :type => "video/mp4"}
+%div{class: 'w-9/12 m-auto'}
+  %h1.text-3xl= @video.title
 
-%h2 This video's tags
-- @tags.each do |tag|
-  = link_to tag.name, tag
+  - if @video.video.attached?
+    %video{:controls => "", :src => "#{rails_blob_path(@video.video)}", :type => "video/mp4"}
 
-%h2 All tags
-- @all_tags.each do |tag|
-  = link_to tag.name, tag
-  = link_to 'add', taggings_path(params: { video_id: @video.id, tag_id: tag.id }), method: :post
-  = link_to 'delete', tagging_path(1, params: { video_id: @video.id, tag_id: tag.id }), method: :delete
+  %h2 This video's tags
+  .m-4
+    - @tags.each do |tag|
+      %a.m-1.p-2.pr-4.pl-4.rounded-full.bg-purple-700.hover:bg-purple-600{href: tag_path(tag)}= tag.name
+      = link_to 'delete', tagging_path(1, params: { video_id: @video.id, tag_id: tag.id }), method: :delete
 
+  %h2 Other tags
+  .m-4
+    - @all_tags.each do |tag|
+      %a.m-1.p-2.pr-4.pl-4.rounded-full.bg-purple-700.hover:bg-purple-600{href: tag_path(tag)}= tag.name
+      = link_to 'add', taggings_path(params: { video_id: @video.id, tag_id: tag.id }), method: :post

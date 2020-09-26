@@ -1,4 +1,6 @@
-%h1= @tag.name
+%div{class: 'w-9/12 m-auto'}
+  %h1.text-3xl= @tag.name
 
-- @videos.each do |video|
-  = link_to video.title, video
+  .m-4
+    - @videos.each do |video|
+      = link_to video.title, video
