@@ -9,14 +9,13 @@ class VideosController < ApplicationController
 
   def create
     @video = Video.create(video_params)
-    # @video.create
     redirect_to @video
   end
 
   def show
     @video = Video.includes(:tags).find(params[:id])
     @tags = @video.tags
-    @all_tags = Tag.all
+    @all_tags = Tag.where.not(id: @tags.ids)
   end
 
   private
