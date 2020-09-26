@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_200_925_161_232) do
+ActiveRecord::Schema.define(version: 20_200_925_182_823) do
   create_table 'active_storage_attachments', force: :cascade do |t|
     t.string 'name', null: false
     t.string 'record_type', null: false
@@ -32,6 +32,22 @@ ActiveRecord::Schema.define(version: 20_200_925_161_232) do
     t.index ['key'], name: 'index_active_storage_blobs_on_key', unique: true
   end
 
+  create_table 'tags', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+  end
+
+  create_table 'video_tags', force: :cascade do |t|
+    t.integer 'video_id', null: false
+    t.integer 'tag_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['tag_id'], name: 'index_video_tags_on_tag_id'
+    t.index %w[video_id tag_id], name: 'index_video_tags_on_video_id_and_tag_id', unique: true
+    t.index ['video_id'], name: 'index_video_tags_on_video_id'
+  end
+
   create_table 'videos', force: :cascade do |t|
     t.string 'title'
     t.datetime 'created_at', precision: 6, null: false
@@ -39,4 +55,6 @@ ActiveRecord::Schema.define(version: 20_200_925_161_232) do
   end
 
   add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'
+  add_foreign_key 'video_tags', 'tags'
+  add_foreign_key 'video_tags', 'videos'
 end
