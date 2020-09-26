@@ -1,24 +1,5 @@
-# README
+# Shiki
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![ci result](https://github.com/9sako6/shiki/workflows/CI/badge.svg)
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+A video posting site.
