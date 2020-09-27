@@ -2,7 +2,8 @@
   %h1.text-3xl= @video.title
 
   - if @video.video.attached?
-    %video{:controls => "", :src => "#{rails_blob_path(@video.video)}", :type => "video/mp4"}
+    %div.text-center
+      %video{:controls => "", :src => "#{rails_blob_path(@video.video)}", :type => "video/mp4"}
 
   %h2 This video's tags
   .m-4
