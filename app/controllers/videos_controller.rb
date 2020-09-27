@@ -28,6 +28,18 @@ class VideosController < ApplicationController
     @all_tags = Tag.where.not(id: @tags.ids)
   end
 
+  def destroy
+    video = Video.find(params[:id])
+    video.video.purge
+    if video.destroy
+      flash[:success] = 'The video was deleted successfully.'
+      redirect_to root_path
+    else
+      flash[:alert] = 'fail to delete the video.'
+      redirect_to video_path(video)
+    end
+  end
+
   private
 
   def video_params
