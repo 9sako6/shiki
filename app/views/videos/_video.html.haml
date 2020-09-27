@@ -1,4 +1,5 @@
-.m-2.h-64
+.m-2.h-64.w-288px.text-center
   %video.cursor-pointer.w-288px.h-162px{:controls => "", :src => "#{rails_blob_path(video.video)}", :type => "video/mp4"}
-  .text-center= link_to video.title, video
-  .text-center= link_to filename(video), video
+  %a.break-word.hover:text-blue-600{href: video_path(video)}= video.title
+  %br/
+  %a.break-word.hover:text-blue-600{href: video_path(video)}= filename(video)

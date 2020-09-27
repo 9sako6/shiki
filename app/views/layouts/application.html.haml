@@ -11,9 +11,10 @@
   %body.bg-gray-900.custom-font
     = render 'layouts/header'
     %main.p-5.text-gray-300
-      - flash.each do |message_type, message|
-        - if message_type == 'alert'
-          .p-4.rounded.border.border-red-400= message
-        - else
-          .p-4.rounded.border.border-gray-400= message
+      %div{class: 'w-9/12 m-auto'}
+        - flash.each do |message_type, message|
+          - if message_type == 'alert'
+            .m-4.p-4.rounded.border.border-red-400= message
+          - else
+            .m-4.p-4.rounded.border.border-green-400.text-green-400= message
       = yield

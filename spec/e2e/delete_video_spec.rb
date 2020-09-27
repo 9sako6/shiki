@@ -11,7 +11,7 @@ feature 'tagging' do
 
     visit video_path(@video)
     click_link 'Delete the video'
-    expect(page).to have_text('The video was deleted successfully.')
+    expect(page).to have_text('The video was deleted.')
     expect(Video.count).to eq(all_videos_count - 1)
   end
 end

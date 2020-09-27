@@ -9,8 +9,9 @@ class TagsController < ApplicationController
   end
 
   def create
-    @tag = Tag.create(tag_params)
-    redirect_to @tag
+    @tag = Tag.new(tag_params)
+    @tag.save
+    redirect_back(fallback_location: root_path)
   end
 
   def show

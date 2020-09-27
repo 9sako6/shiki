@@ -2,7 +2,10 @@
   %h1.text-3xl Videos
 
   .flex.flex-wrap
-    = render @videos
+    - if @videos.size == 0
+      %p There is no videos.
+    - else
+      = render @videos
 
   .text-center
     = paginate @videos

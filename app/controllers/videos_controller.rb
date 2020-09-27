@@ -11,14 +11,10 @@ class VideosController < ApplicationController
   def create
     @video = Video.new(video_params)
     if @video.save
-      flash[:success] = 'The video was uploaded successfully.'
+      flash[:success] = 'The video was uploaded.'
       redirect_to @video
     else
-      message = []
-      message << "Title #{@video.errors.messages[:title].first}" if @video.errors.messages[:title]
-      message << @video.errors.messages[:invalid_video].first if @video.errors.messages[:invalid_video]
-      flash[:alert] = message.join('. ')
-      redirect_to new_video_path
+      render 'new'
     end
   end
 
@@ -32,7 +28,7 @@ class VideosController < ApplicationController
     video = Video.find(params[:id])
     video.video.purge
     if video.destroy
-      flash[:success] = 'The video was deleted successfully.'
+      flash[:success] = 'The video was deleted.'
       redirect_to root_path
     else
       flash[:alert] = 'fail to delete the video.'

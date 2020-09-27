@@ -3,22 +3,33 @@
   %h2.text-2xl= @video.video.filename.to_s
 
   - if @video.video.attached?
-    %div.text-center
+    %div.text-center.mt-4.mb-4
       %video.outline-none.w-full.h-full.max-h-700px.bg-black{:controls => "", :src => "#{rails_blob_path(@video.video)}", :type => "video/mp4"}
 
-    .m-4
-      .inline-block.m-1.p-2.pr-4.pl-4.border.rounded-full.bg-red-700.hover:bg-red-600= link_to 'Delete the video', video_path(@video), method: :delete
+  %h2.text-2xl Create new tag
+  = render 'tags/create_tag'
 
   .m-4
     %h2 This video's tags
     .m-4
-      - @tags.each do |tag|
-        =render tag
-        = link_to 'delete', tagging_path(1, params: { video_id: @video.id, tag_id: tag.id }), method: :delete
+      - if @tags.size == 0
+        %p There is no tags.
+      - else
+        - @tags.each do |tag|
+          =render tag
+          = link_to 'delete', tagging_path(1, params: { video_id: @video.id, tag_id: tag.id }), method: :delete
 
   .m-4
     %h2 The Others
     .m-4
-      - @all_tags.each do |tag|
-        =render tag
-        = link_to 'add', taggings_path(params: { video_id: @video.id, tag_id: tag.id }), method: :post
+      - if @all_tags.size == 0
+        %p There is no tags.
+      - else
+        - @all_tags.each do |tag|
+          =render tag
+          = link_to 'add', taggings_path(params: { video_id: @video.id, tag_id: tag.id }), method: :post
+
+  - if @video.video.attached?
+    %h2.text-2xl Danger zone
+    .m-4
+      .text-red-500.hover:text-red-400= link_to 'Delete the video', video_path(@video), method: :delete

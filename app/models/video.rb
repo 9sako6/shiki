@@ -8,6 +8,6 @@ class Video < ApplicationRecord
   validate :video_presense, on: :create
 
   def video_presense
-    errors.add(:invalid_video, 'It is an invalid video file.') if !video.attached? || !video.content_type.in?(['video/mp4'])
+    errors.add(:invalid_video, 'was selected') if !video.attached? || !video.content_type.in?(['video/mp4'])
   end
 end
