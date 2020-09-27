@@ -1,6 +1,12 @@
 %div{class: 'w-9/12 m-auto'}
   %h1.text-3xl= @tag.name
 
+  .m-4.flex.flex-wrap
+    - if @videos.size == 0
+      %p There is no videos.
+    - else
+      = render @videos
+
+  %h2.text-2xl Tags
   .m-4
-    - @videos.each do |video|
-      = link_to video.title, video
+    = render @tags

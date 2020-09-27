@@ -1,11 +1,13 @@
 %div{class: 'w-9/12 m-auto'}
   %h1.text-3xl Upload new video
 
-  .text-center
+  .w-64.m-auto
     = form_with model: @video, local: true do |form|
-      %p Title
-      %input.mb-4.mt-4.w-64.outline-none.bg-gray-900.border.border-purple-500.text-xs.font-semibold.rounded-full.px-4.py-1.leading-normal{type: "text", name: "video[title]", id: "video_title"}
-      %p Video file
-      = form.file_field :video
-      %div.m-4
-        %input.text-white.bg-purple-700.border-purple-700.hover:bg-purple-600.hover:border-purple-600.border.text-xs.font-semibold.rounded-full.px-4.py-1.leading-normal.cursor-pointer{type: "submit", name: "commit", value: "Create", 'data-disable-with': "Create Video"}
+      .m-2
+        %label.block.font-bold Title
+        %input.mb-4.mt-4.w-64.outline-none.bg-gray-900.border.border-purple-500.text-xs.font-semibold.rounded-full.px-4.py-1.leading-normal{type: "text", name: "video[title]", id: "video_title"}
+      .m-2
+        %label.block.font-bold Video file
+        = form.file_field :video
+      .m-4.text-center
+        %input.outline-none.text-white.bg-purple-700.border-purple-700.hover:bg-purple-600.hover:border-purple-600.border.text-xs.font-semibold.rounded-full.px-4.py-1.leading-normal.cursor-pointer{type: "submit", name: "commit", value: "Upload", 'data-disable-with': "Create Video"}
