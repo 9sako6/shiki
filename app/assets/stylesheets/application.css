@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+ @font-face {
+  font-family: 'MPLUSRounded1c-Medium';
+  src: url('MPLUSRounded1c-Medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.custom-font {
+  font-family: 'MPLUSRounded1c-Medium';
+}
