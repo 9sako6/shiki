@@ -4,5 +4,20 @@
   .flex.flex-wrap
     - @videos.each do |video|
       .m-4.h-64
-        %video.cursor-pointer{:controls => "", :src => "#{rails_blob_path(video.video)}", :type => "video/mp4", width: '300px'}
+        %video.cursor-pointer.max-h-64{:controls => "", :src => "#{rails_blob_path(video.video)}", :type => "video/mp4", width: '300px'}
         .text-center= link_to video.title, video
+
+  .text-center
+    = paginate @videos
+
+:css
+  .pagination .page {
+    margin-right: .5rem;
+    font-size: 1.5rem;
+  }
+  .pagination .page:hover {
+    color: white;
+  }
+  .pagination .page.current {
+    color: gray;
+  }
