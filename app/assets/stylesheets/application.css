@@ -24,3 +24,19 @@
 .custom-font {
   font-family: 'MPLUSRounded1c-Medium';
 }
+
+.h-500px {
+  height: 500px;
+}
+
+.max-h-500px {
+  max-height: 500px;
+}
+
+.h-700px {
+  height: 700px;
+}
+
+.max-h-700px {
+  max-height: 700px;
+}

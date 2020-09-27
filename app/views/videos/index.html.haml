@@ -1,7 +1,8 @@
 %div{class: 'w-9/12 m-auto'}
   %h1.text-3xl Videos
 
-  - @videos.each do |video|
-    .m-4
-      = link_to video.title, video
-      %video{:controls => "", :src => "#{rails_blob_path(video.video)}", :type => "video/mp4", width: '300px'}
+  .flex.flex-wrap
+    - @videos.each do |video|
+      .m-4.h-64
+        %video.cursor-pointer{:controls => "", :src => "#{rails_blob_path(video.video)}", :type => "video/mp4", width: '300px'}
+        .text-center= link_to video.title, video
