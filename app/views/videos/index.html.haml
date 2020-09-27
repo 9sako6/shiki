@@ -2,14 +2,14 @@
   %h1.text-3xl Videos
 
   .flex.flex-wrap
-    - @videos.each do |video|
-      .m-4.h-64
-        %video.cursor-pointer.max-h-64{:controls => "", :src => "#{rails_blob_path(video.video)}", :type => "video/mp4", width: '300px'}
-        .text-center= link_to video.title, video
+    = render @videos
 
   .text-center
     = paginate @videos
 
+  %h2.text-2xl Tags
+  .m-4
+    = render @tags
 :css
   .pagination .page {
     margin-right: .5rem;

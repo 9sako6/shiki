@@ -1,6 +1,7 @@
 class VideosController < ApplicationController
   def index
     @videos = Video.page(params[:page])
+    @tags = Tag.all
   end
 
   def new

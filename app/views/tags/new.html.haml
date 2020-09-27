@@ -1,8 +1,13 @@
 %div{class: 'w-9/12 m-auto'}
   %h1.text-3xl Create new tag
-  %p Please input new tag name.
 
-  .text-center
+  .w-64.m-auto
     = form_with model: @tag do |form|
+      %label.block.font-bold Name
       %input.mb-4.mt-4.w-64.outline-none.bg-gray-900.border.border-purple-500.text-xs.font-semibold.rounded-full.px-4.py-1.leading-normal{type: "text", name: "tag[name]", id: "tag_name"}
-      %input.text-white.bg-purple-700.border-purple-700.hover:bg-purple-600.hover:border-purple-600.border.text-xs.font-semibold.rounded-full.px-4.py-1.leading-normal.cursor-pointer{type: "submit", name: "commit", value: "Create", 'data-disable-with': "Create Tag"}
+      .text-center
+        %input.text-white.bg-purple-700.border-purple-700.hover:bg-purple-600.hover:border-purple-600.border.text-xs.font-semibold.rounded-full.px-4.py-1.leading-normal.cursor-pointer{type: "submit", name: "commit", value: "Create", 'data-disable-with': "Create Tag"}
+
+  %h2.text-2xl Tags
+  .m-4
+    = render @tags

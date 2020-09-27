@@ -2,5 +2,4 @@
   %h1.text-3xl Tags
 
   .m-4
-    - @tags.each do |tag|
-      %a.m-1.p-2.pr-4.pl-4.rounded-full.bg-purple-700.hover:bg-purple-600{href: tag_path(tag)}= tag.name
+    = render @tags

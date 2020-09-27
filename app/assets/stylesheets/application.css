@@ -25,18 +25,23 @@
   font-family: 'MPLUSRounded1c-Medium';
 }
 
+.h-162px {
+  height: 162px;
+}
 .h-500px {
   height: 500px;
+}
+.h-700px {
+  height: 700px;
+}
+
+.w-288px {
+  width: 288px;
 }
 
 .max-h-500px {
   max-height: 500px;
 }
-
-.h-700px {
-  height: 700px;
-}
-
 .max-h-700px {
   max-height: 700px;
 }

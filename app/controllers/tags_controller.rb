@@ -5,6 +5,7 @@ class TagsController < ApplicationController
 
   def new
     @tag = Tag.new
+    @tags = Tag.all
   end
 
   def create
@@ -15,6 +16,7 @@ class TagsController < ApplicationController
   def show
     @tag = Tag.includes(:videos).find(params[:id])
     @videos = @tag.videos
+    @tags = Tag.all
   end
 
   private
