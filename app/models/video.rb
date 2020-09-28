@@ -3,8 +3,6 @@ class Video < ApplicationRecord
   has_many :video_tags, dependent: :delete_all
   has_many :tags, through: :video_tags
 
-  MAX_TITLE_LENGTH = 120
-  validates :title, presence: true, length: { maximum: MAX_TITLE_LENGTH }
   validate :video_presense, on: :create
 
   def video_presense
