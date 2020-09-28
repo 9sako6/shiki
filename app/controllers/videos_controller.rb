@@ -9,13 +9,16 @@ class VideosController < ApplicationController
   end
 
   def create
-    @video = Video.new(video_params)
-    if @video.save
-      flash[:success] = 'The video was uploaded.'
-      redirect_to @video
-    else
-      render 'new'
+    Video.transaction do
+      video_params[:video].each do |video_file|
+        Video.create!(video: video_file)
+      end
     end
+    flash[:success] = 'The video was uploaded.'
+    redirect_to root_path
+  rescue StandardError
+    flash[:alert] = 'The video format is invalid.'
+    redirect_to new_video_path
   end
 
   def show
@@ -39,6 +42,6 @@ class VideosController < ApplicationController
   private
 
   def video_params
-    params.require(:video).permit(:video)
+    params.require(:video).permit(video: [])
   end
 end
